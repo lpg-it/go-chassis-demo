@@ -1,13 +1,11 @@
-cse:
-  service:
-    registry:
-      type: servicecenter
-      scope: full
-      autodiscovery: false
-      address: http://127.0.0.1:10087
-      refeshInterval : 30s
-      watch: true
+---
+servicecomb:
+  registry:
+    address: http://127.0.0.1:30100 # If type is File then address will be the path of the file
   protocols:
     rest:
-      listenAddress: 127.0.0.1:8083
-      advertiseAddress: 127.0.0.1:8083
+      listenAddress: "127.0.0.1:10086"
+  handler:
+    chain:
+      Provider:
+        default: tracing-provider,bizkeeper-provider
